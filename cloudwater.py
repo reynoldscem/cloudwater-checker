@@ -17,6 +17,7 @@ DATABASE_PATH = os.path.join(FILE_DIRECTORY, FILENAME)
 
 SERVER_DETAILS = ('smtp.gmail.com', 465)
 EMAIL_SUBJECT = 'Cloudwater Unit-9 updates!'
+FROM = 'Unit-9 Notifier'
 
 
 def load_details(keys=('username', 'password', 'recipient')):
@@ -192,8 +193,8 @@ def check_for_changes(beers):
         return True
 
 
-def send_email(message, subject=EMAIL_SUBJECT):
-    message = 'Subject: {}\n\n{}'.format(subject, message)
+def send_email(message, subject=EMAIL_SUBJECT, from_name=FROM):
+    message = 'Subject: {}\nFrom: {}\n\n{}'.format(subject, from_name, message)
     message = message.encode('utf8')
 
     try:
